@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap.bundle"
+import "bootstrap-icons/font/bootstrap-icons.css"
+
 
 import Header from './Header';
 import Nav from './Nav';
@@ -46,7 +50,7 @@ function App() {
            )
          }
          </div>
-      
+         <div className="product">پرفروش ترین ها</div>
          <div className="d-flex flex-wrap">
          {
            jewelry.map( item=>
@@ -55,6 +59,7 @@ function App() {
            )
          }
          </div>
+         <div className="product">کالاهای پیشنهادی </div>
          <div className="d-flex flex-wrap">
          {
            suggested.map( item=>

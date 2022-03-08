@@ -1,3 +1,15 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    width: 300px;
+    height: 200px;
+}
+
 .product{
     background-color: aqua;
     height: 50px;
