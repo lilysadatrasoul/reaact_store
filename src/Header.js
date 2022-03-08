@@ -1,7 +1,17 @@
-// import React from 'react'
+import {useState} from 'react'
 import logo from "./assets/images/logo.png"
 
-function Header() {
+
+function Header({qt}) {
+  const [changeText, setChangeText] = useState("ورود")
+  const changeT=()=>{
+    if(changeText=="ورود"){
+      setChangeText("خروج")
+    }else{
+      setChangeText("ورود")
+    }
+
+  }
   return (
     <div>
         <nav className="navbar navbar-light bg-light ps-5 pe-5">
@@ -13,8 +23,8 @@ function Header() {
          </form>
           </div>
           <div className=" ms-5">
-          <div className="bag mb-3"><span ><i class="bi bi-handbag"></i></span></div>
-          <div className="login"><span className="ms-3"><i class="bi bi-person-plus-fill"></i></span><button type="button" class="btn btn-success rounded-pill">ورود/خروج</button></div>
+          <div className="bag mb-3"><span ><i class="bi bi-handbag fs-4 "></i></span> {qt}</div>
+          <div className="login"><span className="ms-3"><i class="bi bi-person-plus-fill fs-4"></i></span><button type="button" class="btn btn-success rounded-pill" onClick={changeT}>{changeText}</button></div>
           </div>
          </nav>
     </div>
