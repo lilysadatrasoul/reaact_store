@@ -1,14 +1,16 @@
 import {useState} from 'react'
-import logo from "./assets/images/logo.png"
+import logo from "../assets/images/logo.png"
 
 
-function Header({qt}) {
+function Header({qt,setL}) {
   const [changeText, setChangeText] = useState("ورود")
   const changeT=()=>{
     if(changeText=="ورود"){
       setChangeText("خروج")
+      setL()
     }else{
       setChangeText("ورود")
+      setL()
     }
 
   }
