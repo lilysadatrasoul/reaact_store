@@ -4,11 +4,11 @@
 
 ## مرحلهٔ 0 — پایداری پروژه (اولویت فوری)
 
-- [ ] انتقال هر سه API call از render به `useEffect` یا یک hook دادهٔ مشخص؛ کنترل rerender، unmount و خطا.
-- [ ] افزودن `key={item.id}` به سه لیست محصولات.
-- [ ] جایگزینی همهٔ `class`های JSX با `className`.
-- [ ] بررسی نتیجهٔ `npm ci`، `npm run build` و smoke test واقعی مرورگر.
-- [ ] مستندسازی خطاهای واقعی runtime به‌جای حدس.
+- [x] انتقال هر سه API call از render به hook مبتنی بر `useEffect`؛ کنترل rerender، unmount و خطا (پیاده‌سازی در شاخهٔ مرحلهٔ صفر).
+- [x] افزودن `key={item.id}` به سه لیست محصولات.
+- [x] جایگزینی همهٔ `class`های JSX با `className` در کامپوننت‌های موجود.
+- [ ] تأیید نتیجهٔ CI برای `npm ci`، tests و build و سپس smoke test واقعی مرورگر (CI اضافه شد؛ PASS هنوز تأیید نشده).
+- [ ] ثبت خروجی واقعی اجرا/خطاها در `.codex/PHASE_0_IMPLEMENTATION.md` پس از اجرای CI و smoke test.
 
 ## مرحلهٔ 1 — بهبود تجربهٔ فروشگاه
 
@@ -40,5 +40,5 @@
 
 - **Inspection:** انجام‌شده (static source review).
 - **Documentation:** ایجاد پوشهٔ `.codex` در این تغییر.
-- **Implementation / tests / visual approval:** انجام‌نشده.
-- **Next recommended action:** مرحلهٔ 0، شروع با رفع fetch در render.
+- **Implementation:** اصلاحات مرحلهٔ صفر روی شاخهٔ مجزا انجام شده؛ **automated tests/CI/browser verification:** تا دریافت نتایج، تأییدنشده.
+- **Next recommended action:** بررسی وضعیت CI و smoke test مرحلهٔ صفر؛ سپس مرحلهٔ 1.
