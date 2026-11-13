@@ -7,8 +7,10 @@
 - [x] انتقال هر سه API call از render به hook مبتنی بر `useEffect`؛ کنترل rerender، unmount و خطا (پیاده‌سازی در شاخهٔ مرحلهٔ صفر).
 - [x] افزودن `key={item.id}` به سه لیست محصولات.
 - [x] جایگزینی همهٔ `class`های JSX با `className` در کامپوننت‌های موجود.
-- [ ] تأیید نتیجهٔ CI برای `npm ci`، tests و build و سپس smoke test واقعی مرورگر (CI اضافه شد؛ PASS هنوز تأیید نشده).
-- [ ] ثبت خروجی واقعی اجرا/خطاها در `.codex/PHASE_0_IMPLEMENTATION.md` پس از اجرای CI و smoke test.
+- [x] تأیید `npm ci`، تست‌های React و production build در GitHub Actions (PASS برای commit `74a42ba7`).
+- [ ] smoke test واقعی مرورگر: بررسی Network/Console و رفتار mobile/desktop.
+- [x] ثبت نتیجهٔ واقعی CI و علت شکست اجرای اولیه در `.codex/PHASE_0_IMPLEMENTATION.md`.
+- [ ] ثبت نتایج smoke test واقعی مرورگر پس از اجرا.
 
 ## مرحلهٔ 1 — بهبود تجربهٔ فروشگاه
 
@@ -40,5 +42,5 @@
 
 - **Inspection:** انجام‌شده (static source review).
 - **Documentation:** ایجاد پوشهٔ `.codex` در این تغییر.
-- **Implementation:** اصلاحات مرحلهٔ صفر روی شاخهٔ مجزا انجام شده؛ **automated tests/CI/browser verification:** تا دریافت نتایج، تأییدنشده.
-- **Next recommended action:** بررسی وضعیت CI و smoke test مرحلهٔ صفر؛ سپس مرحلهٔ 1.
+- **Implementation:** اصلاحات مرحلهٔ صفر روی شاخهٔ مجزا انجام شده؛ **automated tests/CI:** PASS؛ **browser verification:** هنوز اجرا نشده.
+- **Next recommended action:** smoke test مرحلهٔ صفر در مرورگر؛ سپس مرحلهٔ 1.
