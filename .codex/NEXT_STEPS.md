@@ -4,11 +4,14 @@
 
 ## مرحلهٔ 0 — پایداری پروژه (اولویت فوری)
 
-- [ ] انتقال هر سه API call از render به `useEffect` یا یک hook دادهٔ مشخص؛ کنترل rerender، unmount و خطا.
-- [ ] افزودن `key={item.id}` به سه لیست محصولات.
-- [ ] جایگزینی همهٔ `class`های JSX با `className`.
-- [ ] بررسی نتیجهٔ `npm ci`، `npm run build` و smoke test واقعی مرورگر.
-- [ ] مستندسازی خطاهای واقعی runtime به‌جای حدس.
+- [x] انتقال هر سه API call از render به hook مبتنی بر `useEffect`؛ کنترل rerender، unmount و خطا (پیاده‌سازی در شاخهٔ مرحلهٔ صفر).
+- [x] افزودن `key={item.id}` به سه لیست محصولات.
+- [x] جایگزینی همهٔ `class`های JSX با `className` در کامپوننت‌های موجود.
+- [x] تأیید `npm ci`، تست‌های React و production build در GitHub Actions (PASS برای commit `74a42ba7`).
+- [x] smoke test مرورگر — پنج معیار پذیرش توسط مالک تأیید شد (2026-11-13).
+- [ ] بررسی اختصاصی واکنش‌گرایی و اندازه‌های مختلف صفحه در مرحلهٔ ۱.
+- [x] ثبت نتیجهٔ واقعی CI و علت شکست اجرای اولیه در `.codex/PHASE_0_IMPLEMENTATION.md`.
+- [x] ثبت نتیجهٔ پنج تست مرورگر در `.codex/PHASE_0_IMPLEMENTATION.md` با عنوان گزارش مالک.
 
 ## مرحلهٔ 1 — بهبود تجربهٔ فروشگاه
 
@@ -40,5 +43,5 @@
 
 - **Inspection:** انجام‌شده (static source review).
 - **Documentation:** ایجاد پوشهٔ `.codex` در این تغییر.
-- **Implementation / tests / visual approval:** انجام‌نشده.
-- **Next recommended action:** مرحلهٔ 0، شروع با رفع fetch در render.
+- **Implementation:** اصلاحات مرحلهٔ صفر روی شاخهٔ مجزا انجام شده؛ **automated tests/CI:** PASS؛ **browser verification:** پنج تست پذیرش گزارش‌شده توسط مالک PASS.
+- **Next recommended action:** نهایی‌سازی PR مرحلهٔ صفر و سپس شروع بازطراحی مرحلهٔ ۱.
