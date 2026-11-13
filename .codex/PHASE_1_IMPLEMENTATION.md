@@ -30,8 +30,10 @@
 
 - The existing 3 Phase 0 regression tests must continue to pass.
 - 3 new regression tests cover in-memory search, navigation anchors and favorite button state.
-- PR GitHub Actions: `npm ci`, `CI=true npm test -- --watch=false`, `CI=true npm run build`.
-- Until run results are verified, do **not** state tests or build PASS.
+- PR GitHub Actions: `npm ci`, `CI=true npm test -- --watch=false`, `CI=true npm run build` (latest code commit above PASS).
+- GitHub Actions **PASS** on `074748a3a71576c9f835755569aa4e1e7fc70bfa`: `npm ci`, six React tests, and `npm run build` succeeded (Node 20).
+- Evidence: https://github.com/lilysadatrasoul/reaact_store/actions/runs/43497958783
+- Draft PR #2: https://github.com/lilysadatrasoul/reaact_store/pull/2
 - Browser acceptance remains pending: desktop and phone widths 320/375/768/1024/1440, no horizontal overflow, clear hero text, legible cards, working menu, cart and search.
 - Owner should approve the visual direction before merging Phase 1. Do not deploy.
 
