@@ -74,3 +74,49 @@ test("aborts in-flight requests when the app unmounts", () => {
 
   expect(signals.every((signal) => signal.aborted === true)).toBe(true);
 });
+
+test("filters loaded products locally and shows an empty result without refetching", async () => {
+  render(<App />);
+
+  await waitFor(() => {
+    expect(screen.getAllByText("کالای آزمایشی")).toHaveLength(3);
+  });
+
+  const input = screen.getByRole("searchbox", { name: "جست‌وجوی کالا" });
+  fireEvent.change(input, { target: { value: "کالای ناموجود" } });
+
+  expect(screen.queryByText("کالای آزمایشی")).not.toBeInTheDocument();
+  expect(screen.getAllByText("محصولی مطابق جست‌وجوی شما پیدا نشد.")).toHaveLength(3);
+  expect(global.fetch).toHaveBeenCalledTimes(3);
+
+  fireEvent.change(input, { target: { value: "کالای آزمایشی" } });
+  expect(screen.getAllByText("کالای آزمایشی")).toHaveLength(3);
+  expect(global.fetch).toHaveBeenCalledTimes(3);
+});
+
+test("renders working in-page navigation for each product section", () => {
+  render(<App />);
+  const navigation = screen.getByRole("navigation", { name: "دسترسی به بخش‌های فروشگاه" });
+  expect(navigation.querySelector('a[href="#products"]')).toHaveTextContent("محصولات");
+  expect(navigation.querySelector('a[href="#bestsellers"]')).toHaveTextContent("پرفروش‌ترین‌ها");
+  expect(navigation.querySelector('a[href="#suggested"]')).toHaveTextContent("کالاهای پیشنهادی");
+  expect(document.getElementById("products")).toBeInTheDocument();
+  expect(document.getElementById("bestsellers")).toBeInTheDocument();
+  expect(document.getElementById("suggested")).toBeInTheDocument();
+});
+
+test("favorite control is accessible and toggles its pressed state", async () => {
+  render(<App />);
+  await waitFor(() => {
+    expect(screen.getAllByText("کالای آزمایشی")).toHaveLength(3);
+  });
+
+  expect(screen.queryByRole("button", { name: "افزودن به علاقه‌مندی‌ها" })).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "ورود" }));
+
+  const favorite = screen.getByRole("button", { name: "افزودن به علاقه‌مندی‌ها" });
+  expect(favorite).toHaveAttribute("aria-pressed", "false");
+  fireEvent.click(favorite);
+  expect(screen.getByRole("button", { name: "حذف از علاقه‌مندی‌ها" }))
+    .toHaveAttribute("aria-pressed", "true");
+});
