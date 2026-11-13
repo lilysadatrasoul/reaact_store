@@ -8,9 +8,10 @@
 - [x] افزودن `key={item.id}` به سه لیست محصولات.
 - [x] جایگزینی همهٔ `class`های JSX با `className` در کامپوننت‌های موجود.
 - [x] تأیید `npm ci`، تست‌های React و production build در GitHub Actions (PASS برای commit `74a42ba7`).
-- [ ] smoke test واقعی مرورگر: بررسی Network/Console و رفتار mobile/desktop.
+- [x] smoke test مرورگر — پنج معیار پذیرش توسط مالک تأیید شد (2026-11-13).
+- [ ] بررسی اختصاصی واکنش‌گرایی و اندازه‌های مختلف صفحه در مرحلهٔ ۱.
 - [x] ثبت نتیجهٔ واقعی CI و علت شکست اجرای اولیه در `.codex/PHASE_0_IMPLEMENTATION.md`.
-- [ ] ثبت نتایج smoke test واقعی مرورگر پس از اجرا.
+- [x] ثبت نتیجهٔ پنج تست مرورگر در `.codex/PHASE_0_IMPLEMENTATION.md` با عنوان گزارش مالک.
 
 ## مرحلهٔ 1 — بهبود تجربهٔ فروشگاه
 
@@ -42,5 +43,5 @@
 
 - **Inspection:** انجام‌شده (static source review).
 - **Documentation:** ایجاد پوشهٔ `.codex` در این تغییر.
-- **Implementation:** اصلاحات مرحلهٔ صفر روی شاخهٔ مجزا انجام شده؛ **automated tests/CI:** PASS؛ **browser verification:** هنوز اجرا نشده.
-- **Next recommended action:** smoke test مرحلهٔ صفر در مرورگر؛ سپس مرحلهٔ 1.
+- **Implementation:** اصلاحات مرحلهٔ صفر روی شاخهٔ مجزا انجام شده؛ **automated tests/CI:** PASS؛ **browser verification:** پنج تست پذیرش گزارش‌شده توسط مالک PASS.
+- **Next recommended action:** نهایی‌سازی PR مرحلهٔ صفر و سپس شروع بازطراحی مرحلهٔ ۱.

@@ -20,14 +20,15 @@
 ## Verification status — 2026-11-13
 
 - Source review: **completed**; only the Phase 0 scope was changed.
-- GitHub branch and draft PR: **created** — https://github.com/lilysadatrasoul/reaact_store/pull/1
+- GitHub branch and PR: **created** — https://github.com/lilysadatrasoul/reaact_store/pull/1
 - GitHub Actions CI for commit `74a42ba7b4990a9101261773a978b6e7942c0376`: **PASS** for `npm ci`, `CI=true npm test -- --watch=false`, and `CI=true npm run build` on Node.js 20. Verified runs:
   - PR workflow: https://github.com/lilysadatrasoul/reaact_store/actions/runs/43492829344 — success.
   - Push workflow: https://github.com/lilysadatrasoul/reaact_store/actions/runs/43492759455 — success.
 - The first push workflow of commit `358abdd5` failed in the test step because a Jest DOM matcher was not imported; corrected in commit `74a42ba7`. The subsequent full test/build runs passed.
 - Local `npm ci`, tests and build in the review environment: **NOT RUN** (CI was used instead).
-- Browser Network/Console and mobile/desktop visual smoke testing: **NOT RUN**; do not mark Phase 0 fully verified until these are checked.
-- `main`: **unchanged**, no merge or deployment.
+- Browser smoke test: **PASS — user-reported, 2026-11-13**. User confirmed all five acceptance checks: three product sections displayed, add-to-cart count increments, login/favorite toggle works, no red Console errors, no recurring API calls after initial load.
+- This browser result is the owner's report, not an independently observed automated browser test. Dedicated responsive viewport/a11y tests remain for Phase 1.
+- Owner approved finishing Phase 0 after the five browser checks. Phase 0 is **ACCEPTED**; PR #1 may be merged as the next step. No deployment is requested.
 
 ## Still out of scope
 
