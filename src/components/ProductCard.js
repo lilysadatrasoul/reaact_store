@@ -1,52 +1,73 @@
 import { useState } from "react";
 
-function ProductCard({ id, title, price, image, setQuantityT, IsLogin }) {
-  const [number, setNumber] = useState(0);
-  const [fav, setFav] = useState(false);
+const formatPrice = (value) =>
+  new Intl.NumberFormat("fa-IR", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 2,
+  }).format(Number(value) || 0);
+
+function ProductCard({
+  title,
+  price,
+  image,
+  setQuantityT,
+  IsLogin = false,
+  showActions = false,
+}) {
+  const [quantity, setQuantity] = useState(0);
+  const [favorite, setFavorite] = useState(false);
 
   const addToCart = () => {
-    setNumber((current) => current + 1);
-    setQuantityT();
+    setQuantity((current) => current + 1);
+    if (setQuantityT) setQuantityT();
   };
 
   return (
-    <div>
-      <div className="card ms-5 me-5 border border-0" style={{ width: "17rem", height: "40rem" }}>
+    <article className="shop-card">
+      <div className="shop-card__media">
         <img
           src={image}
-          className="card-img-top w-100 ms-5 me-5 mt-5"
-          style={{ height: "17rem" }}
-          alt="..."
+          alt={`تصویر محصول ${title}`}
+          className="shop-card__image"
+          loading="lazy"
         />
-        <div className="card-body ms-5 me-5" style={{ height: "10rem" }}>
-          <div className="title">{title}</div>
-          <div className="price">{price}</div>
-          <div className="id">{id}</div>
-        </div>
-        <div id="number" className="fs-3 ms-5 me-5">{number}</div>
-        {IsLogin && (
+        {showActions && IsLogin && (
           <button
             type="button"
-            className="border-0 bg-transparent p-0"
-            aria-label={fav ? "حذف از علاقه‌مندی‌ها" : "افزودن به علاقه‌مندی‌ها"}
-            aria-pressed={fav}
-            onClick={() => setFav((current) => !current)}
+            className="shop-card__favorite"
+            aria-label={favorite ? "حذف از علاقه‌مندی‌ها" : "افزودن به علاقه‌مندی‌ها"}
+            aria-pressed={favorite}
+            onClick={() => setFavorite((current) => !current)}
           >
-            <i className={`bi bi-heart-fill fs-4 ${fav ? "text-danger" : ""}`} aria-hidden="true" />
+            <i
+              className={`bi ${favorite ? "bi-heart-fill" : "bi-heart"}`}
+              aria-hidden="true"
+            />
           </button>
         )}
-        <div>
-          <button
-            type="button"
-            id="add-basket"
-            className="btn btn-primary rounded-pill ms-5 me-5"
-            onClick={addToCart}
-          >
-            به سبد خرید اضافه کنید
-          </button>
-        </div>
       </div>
-    </div>
+      <div className="shop-card__details">
+        <h3 className="shop-card__title" title={title} dir="auto">{title}</h3>
+        <p className="shop-card__price" dir="ltr">{formatPrice(price)}</p>
+
+        {showActions && (
+          <div className="shop-card__actions">
+            <span className="shop-card__quantity" aria-live="polite">
+              تعداد: {quantity.toLocaleString("fa-IR")}
+            </span>
+            <button
+              type="button"
+              className="shop-card__add"
+              onClick={addToCart}
+            >
+              <i className="bi bi-bag-plus" aria-hidden="true" />
+              به سبد خرید اضافه کنید
+            </button>
+          </div>
+        )}
+      </div>
+    </article>
   );
 }
 
